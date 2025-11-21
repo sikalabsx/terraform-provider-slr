@@ -52,4 +52,4 @@ signs:
 release:
 
 changelog:
-  skip: true
+  disable: true
