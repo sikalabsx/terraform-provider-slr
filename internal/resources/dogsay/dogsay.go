@@ -33,18 +33,22 @@ func (r *dogSayResource) Metadata(ctx context.Context, req resource.MetadataRequ
 
 func (r *dogSayResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		MarkdownDescription: "Renders text as ASCII art of a dog saying it (like cowsay) using [dogsay](https://github.com/sikalabs/dogsay).",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Computed: true,
+				MarkdownDescription: "Unique identifier (UUID) of the resource.",
+				Computed:            true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"text": schema.StringAttribute{
-				Required: true,
+				MarkdownDescription: "Text the dog should say.",
+				Required:            true,
 			},
 			"output": schema.StringAttribute{
-				Computed: true,
+				MarkdownDescription: "Rendered ASCII art output.",
+				Computed:            true,
 			},
 		},
 	}

@@ -46,7 +46,9 @@ func (p *slrProvider) Metadata(ctx context.Context, req provider.MetadataRequest
 }
 
 func (p *slrProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
-	resp.Schema = schema.Schema{}
+	resp.Schema = schema.Schema{
+		MarkdownDescription: "Terraform provider `slr` by SikaLabs with simple example resources.",
+	}
 }
 
 func (p *slrProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {

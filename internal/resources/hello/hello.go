@@ -32,20 +32,24 @@ func (r *helloResource) Metadata(ctx context.Context, req resource.MetadataReque
 
 func (r *helloResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		MarkdownDescription: "Generates a greeting message `Hello <name>`.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Computed: true,
+				MarkdownDescription: "Unique identifier (UUID) of the resource.",
+				Computed:            true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"name": schema.StringAttribute{
-				Optional: true,
-				Computed: true,
-				Default:  stringdefault.StaticString("World"),
+				MarkdownDescription: "Name to greet. Defaults to `World`.",
+				Optional:            true,
+				Computed:            true,
+				Default:             stringdefault.StaticString("World"),
 			},
 			"message": schema.StringAttribute{
-				Computed: true,
+				MarkdownDescription: "Generated greeting message.",
+				Computed:            true,
 			},
 		},
 	}
